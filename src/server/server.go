@@ -1,3 +1,4 @@
+// env GOOS=linux GOARCH=amd64 go build -v -o server-linux src/server/server.go
 package main
 
 import (
