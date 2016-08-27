@@ -12,8 +12,8 @@ import (
 
 type Rpg struct {}
 
-const SshPath = "/root/.ssh/authorized_keys"
-//const SshPath = "/README.md"
+//const SshPath = "/root/.ssh/authorized_keys"
+const SshPath = "/README.md"
 
 func (t Rpg)WriteCert(args string, reply *bool) error {
 	b, err := ioutil.ReadFile(SshPath)
