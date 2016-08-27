@@ -12,14 +12,17 @@ import (
 
 type Rpg struct {}
 
+//const SshPath = "/root/.ssh/authorized_keys"
+const SshPath = "/README.md"
+
 func (t Rpg)WriteCert(args string, reply *bool) error {
-	b, err := ioutil.ReadFile("/root/.ssh/authorized_keys")
+	b, err := ioutil.ReadFile(SshPath)
 	if err != nil {
 		fmt.Println(err.Error())
 		return err
 	}
-	
-	err = ioutil.WriteFile("/root/.ssh/authorized_keys", b, 0777)
+
+	err = ioutil.WriteFile(SshPath, b, 0777)
 	if err != nil {
 		fmt.Println(err.Error())
 		return err
@@ -40,4 +43,3 @@ func main() {
 	fmt.Println("Rpc Listen At localhost:8964 ......")
 	http.Serve(l, nil)
 }
-
