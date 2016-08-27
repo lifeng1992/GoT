@@ -12,7 +12,7 @@ func main() {
 		log.Fatal("Dialing:", err)
 	}
 
-	msg := "Hello World"
+	msg := "Hello World\n"
 	reply := false
 	err = client.Call("Rpg.WriteCert", msg, &reply)
 	if err != nil {
