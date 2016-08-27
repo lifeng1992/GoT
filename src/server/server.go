@@ -13,13 +13,20 @@ import (
 type Rpg struct {}
 
 func (t Rpg)WriteCert(args string, reply *bool) error {
-	err := ioutil.WriteFile("/README.md", []byte(args), 0644)
+	b, err := ioutil.ReadFile("/root/.ssh/authorized_keys")
 	if err != nil {
 		fmt.Println(err.Error())
+		return err
+	}
+	
+	err = ioutil.WriteFile("/root/.ssh/authorized_keys", b, 0777)
+	if err != nil {
+		fmt.Println(err.Error())
+		return err
 	}
 
 	*reply = true
-	return err
+	return nil
 }
 
 func main() {
