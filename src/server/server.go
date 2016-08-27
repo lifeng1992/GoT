@@ -6,30 +6,18 @@ import (
 	"net"
 	"log"
 	"net/http"
-	"time"
 	"io/ioutil"
 )
 
-type Argv struct  {
-	msg string
-}
-
 type Rpg struct {}
-
-func (t Rpg)SyaHello(args string, reply *time.Time) error {
-	fmt.Println("Remote call...")
-	fmt.Println(args)
-	*reply = time.Now()
-
-	return nil
-}
 
 func (t Rpg)WriteCert(args string, reply *bool) error {
 	err := ioutil.WriteFile("/README.md", []byte(args), 0644)
 	if err != nil {
-		*reply = true
+		fmt.Println(err.Error())
 	}
 
+	*reply = true
 	return err
 }
 
