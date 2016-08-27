@@ -4,10 +4,14 @@ import (
 	"net/rpc"
 	"log"
 	"fmt"
+	"flag"
 )
 
 func main() {
-	client, err := rpc.DialHTTP("tcp", "127.0.0.1" + ": 8964")
+	var ip = flag.String("ip", "127.0.0.1", "Server IP")
+	flag.Parse()
+
+	client, err := rpc.DialHTTP("tcp", *ip + ": 8964")
 	if err != nil {
 		log.Fatal("Dialing:", err)
 	}
